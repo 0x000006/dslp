@@ -7,6 +7,6 @@ Dedicated Lan Pinger is a mod for Minecraft that makes the server broadcast its 
 
 It is **server-side only**, vanilla clients can see the broadcast.
 
-![screenshot](https://github.com/0x000006/dedicated_lan_pinger/assets/56885523/a5e9e7a4-8820-44a3-80d2-ebd79da1704a)
+![screenshot](https://github.com/0x000006/dedicated_lan_pinger/blob/1.19.x-1.20.x/screenshots/1.png)
 
 Currently it is compatible with versions 1.19-1.20.2 and there are no plans to port it to Forge/NeoForge.
