@@ -47,7 +47,7 @@ public abstract class MinecraftDedicatedServerMixin {
     @Unique
     public String createLanMotd() {
         DedicatedPlayerManager playerManager = getPlayerManager();
-        if(playerManager == null) return "§f" + getMotd().replace("§r", "§f") + "§7 | ?§8/§7?";
-        return "§f" + getMotd().replace("§r", "§f") + "§7 | " + playerManager.getPlayerList().size() + "§8/§7" + playerManager.getMaxPlayerCount();
+        if(playerManager == null) return getMotd() + "§7 | ?§8/§7?";
+        return getMotd() + "§7 | " + playerManager.getPlayerList().size() + "§8/§7" + playerManager.getMaxPlayerCount();
     }
 }
