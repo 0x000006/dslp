@@ -1,7 +1,7 @@
 # Dedicated Server LAN Pinger (DSLP)
 
-<a href="https://modrinth.com/mod/dedicated-lan-pinger"><img alt="Modrinth page for the mod" height="64" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3.1.2/assets/cozy/available/modrinth_vector.svg"></a>
-<a href="https://github.com/0x000006/dedicated_lan_pinger"><img alt="Github page for the mod" height="64" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3.1.2/assets/cozy/available/github_vector.svg"></a>
+<a href="https://modrinth.com/mod/dslp"><img alt="Modrinth page for the mod" height="64" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3.1.2/assets/cozy/available/modrinth_vector.svg"></a>
+<a href="https://github.com/0x000006/dslp"><img alt="Github page for the mod" height="64" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3.1.2/assets/cozy/available/github_vector.svg"></a>
 
 DSLP makes the server broadcast its presence on LAN, so you can find it easier.
 
