@@ -14,11 +14,11 @@
   "environment": "server",
   "entrypoints": {
     "server": [
-      "zerox06.dedicatedlanpinger.DedicatedLanPingerMod"
+      "zerox06.dslp.DSLPMod"
     ]
   },
   "mixins": [
-    "dedicatedlanpinger.mixins.json"
+    "dslp.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",
