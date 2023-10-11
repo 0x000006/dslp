@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "dedicatedlanpinger",
+  "id": "dslp",
   "version": "${version}",
-  "name": "Dedicated Lan Pinger",
+  "name": "Dedicated Server Lan Pinger",
   "description": "Makes the server broadcast its presence on lan, so you can find it easier.",
   "authors": ["0x06"],
   "contact": {
