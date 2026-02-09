@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "id": "dslp",
   "version": "${version}",
-  "name": "Dedicated Server Lan Pinger",
-  "description": "Makes the server broadcast its presence on lan, so you can find it easier.",
+  "name": "Dedicated Server LAN Pinger",
+  "description": "Makes the server broadcast its presence on LAN, so you can find it easier.",
   "authors": ["0x06"],
   "contact": {
     "repo": "https://github.com/0x000006/dedicated_lan_pinger",
