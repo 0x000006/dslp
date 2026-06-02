@@ -1,6 +1,5 @@
 package zerox06.dslp.network;
 
-import net.minecraft.util.logging.UncaughtExceptionLogger;
 import zerox06.dslp.DSLP;
 
 import java.io.IOException;
@@ -9,6 +8,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.nio.charset.StandardCharsets;
 import java.util.function.Supplier;
+import net.minecraft.DefaultUncaughtExceptionHandler;
 
 public class BetterLanPinger extends Thread {
     public static final String PING_ADDRESS = "224.0.2.60";
@@ -24,7 +24,7 @@ public class BetterLanPinger extends Thread {
         this.MOTDSupplier = MOTDSupplier;
         this.serverPort = String.valueOf(serverPort);
         setDaemon(true);
-        setUncaughtExceptionHandler(new UncaughtExceptionLogger(DSLP.LOGGER));
+        setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandler(DSLP.LOGGER));
         this.socket = new DatagramSocket();
     }
 
