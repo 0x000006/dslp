@@ -1,7 +1,5 @@
 package zerox06.dslp.mixin;
 
-import net.minecraft.server.dedicated.DedicatedPlayerManager;
-import net.minecraft.server.dedicated.MinecraftDedicatedServer;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -14,21 +12,23 @@ import zerox06.dslp.DSLP;
 import zerox06.dslp.network.BetterLanPinger;
 
 import java.io.IOException;
+import net.minecraft.server.dedicated.DedicatedPlayerList;
+import net.minecraft.server.dedicated.DedicatedServer;
 
-@Mixin(MinecraftDedicatedServer.class)
+@Mixin(DedicatedServer.class)
 public abstract class MinecraftDedicatedServerMixin {
-    @Shadow public abstract String getMotd();
-    @Shadow public abstract int getPort();
-    @Shadow public abstract DedicatedPlayerManager getPlayerManager();
+    @Shadow public abstract String getServerName();
+    @Shadow public abstract int getServerPort();
+    @Shadow public abstract DedicatedPlayerList getPlayerList();
 
     @Unique
     @Nullable
     public BetterLanPinger lanPinger;
 
-    @Inject(method = "setupServer()Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/dedicated/MinecraftDedicatedServer;isOnlineMode()Z", ordinal = 0))
+    @Inject(method = "initServer()Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/dedicated/DedicatedServer;usesAuthentication()Z", ordinal = 0))
     void beforeLevelLoad(CallbackInfoReturnable<Boolean> cir) {
         try {
-            lanPinger = new BetterLanPinger(this::createLanMotd, getPort());
+            lanPinger = new BetterLanPinger(this::createLanMotd, getServerPort());
             lanPinger.start();
         } catch (IOException e) {
             DSLP.LOGGER.warn("**** FAILED TO CREATE LAN PINGER!");
@@ -36,7 +36,7 @@ public abstract class MinecraftDedicatedServerMixin {
         }
     }
 
-    @Inject(method = "shutdown", at = @At("TAIL"))
+    @Inject(method = "stopServer", at = @At("TAIL"))
     void onShutdown(CallbackInfo ci) {
         if (lanPinger != null) {
             lanPinger.interrupt();
@@ -46,8 +46,8 @@ public abstract class MinecraftDedicatedServerMixin {
 
     @Unique
     public String createLanMotd() {
-        DedicatedPlayerManager playerManager = getPlayerManager();
-        if(playerManager == null) return getMotd() + "§7 | ?§8/§7?";
-        return getMotd() + "§7 | " + playerManager.getPlayerList().size() + "§8/§7" + playerManager.getMaxPlayerCount();
+        DedicatedPlayerList playerManager = getPlayerList();
+        if(playerManager == null) return getServerName() + "§7 | ?§8/§7?";
+        return getServerName() + "§7 | " + playerManager.getPlayers().size() + "§8/§7" + playerManager.getMaxPlayers();
     }
 }
